@@ -2,7 +2,7 @@ package main;
 
 import java.util.Date;
 
-class Contatto {
+public class Contatto {
 	private String nome;
 	private String cognome;
 	private long numero;
