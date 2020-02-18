@@ -11,7 +11,7 @@ class Contatto {
 	private Date nascita;
 	private int id;
 	private boolean preferiti;
-	
+	// Commento
 	public Contatto(String nome, String cognome, long numero, String email, String indirizzo, Date nascita, int id,
 			boolean preferiti) {
 		super();
