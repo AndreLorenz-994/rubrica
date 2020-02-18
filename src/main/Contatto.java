@@ -254,7 +254,7 @@ public class Contatto {
 	   public static void printContatti(ArrayList<Contatto> c) {
 			  
 		   try {
-				FileWriter writer = new FileWriter("C:\\Users\\GiovanniAndrea\\Desktop\\rubrica.txt");
+				FileWriter writer = new FileWriter(System.getProperty("user.dir") + ".txt");
 				for(int j = 0; j < c.size(); j++) {
 					Contatto cont = c.get(j);	
 					String spattern = "%s - %s - %d - %s - %s - %s \n";
