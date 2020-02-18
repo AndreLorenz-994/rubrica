@@ -1,6 +1,7 @@
 package main;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -14,11 +15,11 @@ public class Contatto {
 	private long numero;
 	private String email;
 	private String indirizzo;
-	private Date nascita;
+	private String nascita;
 	private int id;
 	private boolean preferiti;
 	// Commento
-	public Contatto(String nome, String cognome, long numero, String email, String indirizzo, Date nascita, int id,
+	public Contatto(String nome, String cognome, long numero, String email, String indirizzo, String nascita, 
 			boolean preferiti) {
 		super();
 		this.nome = nome;
@@ -53,7 +54,7 @@ public class Contatto {
 		return indirizzo;
 	}
 
-	public Date getNascita() {
+	public String getNascita() {
 		return nascita;
 	}
 
@@ -85,7 +86,7 @@ public class Contatto {
 		this.indirizzo = indirizzo;
 	}
 
-	public void setNascita(Date nascita) {
+	public void setNascita(String nascita) {
 		this.nascita = nascita;
 	}
 
@@ -96,30 +97,47 @@ public class Contatto {
 	public void setPreferiti(boolean preferiti) {
 		this.preferiti = preferiti;
 	}
+	
 
 	public void ricercaPerNome(ArrayList<Contatto> array,String nameToSearch,String lastnameToSearch) {
 		for(Contatto cont : array){
 	        if((cont.getNome() != null && cont.getNome().contains(nameToSearch))&&(cont.getCognome() != null && cont.getCognome().contains(lastnameToSearch))) {
-	        	  System.out.println(array);
+	        	  System.out.println(cont.getNome());
+	        	  System.out.println(cont.getCognome());
+	        	  System.out.println(cont.getNumero());
+	        	  System.out.println(cont.getEmail());
+	        	  System.out.println(cont.getIndirizzo());
+	        	  System.out.println(cont.getNascita());
 	        }
 	    }
 	}
-
+	
 	public Contatto addContact() {
-		Scanner in = new Scanner(System.in);
 		System.out.println("Inserisci il nome: ");
 		String currentName = in.nextLine();
 		System.out.println("Inserisci il cognome: ");
-		String currentLastName = in.nextLine();
-
-		 Contatto currentCont = new Contatto();
-		 return currentCont;
+		String currentLastname = in.nextLine();
+		System.out.println("Inserisci il numero di telefono: ");
+		long currentNumber = Long.parseLong(in.nextLine());
+		System.out.println("Inserisci la e-mail: ");
+		String currentMail = in.nextLine();
+		System.out.println("Inserisci indirizzo: ");
+		String currentAddress = in.nextLine();
+		System.out.println("Inserisci la data di nascita: ");					
+		String currentDate = in.nextLine();									      	
+		System.out.println("Fa parte dei contatti preferiti? [true/false]");
+		boolean currentPref = Boolean.parseBoolean(in.nextLine());
+		 
+		Contatto currentCont = new Contatto(currentName,currentLastname,currentNumber,currentMail,currentAddress,currentDate,currentPref);
+		return currentCont;
 	}
+
 	
-	public void modificaContatto(ArrayList<Contatto> array) throws ParseException {
-		System.out.println("Seleziona il nome del contatto da modificare");
+	
+	public void modificaContatto(ArrayList<Contatto> array) {
+		System.out.println("Seleziona il nome del contatto da modificare:");
 		String nameToSearch = in.nextLine();
-		System.out.println("Seleziona il cognome del contatto da modificare");
+		System.out.println("Seleziona il cognome del contatto da modificare:");
 		String lastnameToSearch = in.nextLine();
 		for(Contatto cont : array){
 			if((cont.getNome() != null && cont.getNome().contains(nameToSearch))&&(cont.getCognome() != null && cont.getCognome().contains(lastnameToSearch))) {
@@ -164,10 +182,8 @@ public class Contatto {
 				        	 cont.setIndirizzo(newAddress);						
 						break;
 						case 6:
-							SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
 							System.out.println("Nuovo data di nascita");					
-							String dateInString = in.nextLine();
-							Date newDate = formatter.parse(dateInString);									      
+							String newDate = in.nextLine();								      
 				        	cont.setNascita(newDate);	
 				        	System.out.println(cont.getNascita());
 						break;

@@ -1,4 +1,8 @@
 package main;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.Scanner;
 
 public class Menu {
@@ -9,9 +13,9 @@ public class Menu {
 		
 		System.out.println("Buongiono, benvenuti in Rubrica");
         System.out.println();
-        System.out.println("1) inserisci dati");
+        System.out.println("1) aggiungi");
         System.out.println("2) ricerca");
-        System.out.println("3) aggiunggi");
+        System.out.println("3) mostra preferiti");
         System.out.println("4) modifica");
         System.out.println("5) elimina");
         System.out.println("6) visualizza rubrica");
@@ -24,24 +28,30 @@ public class Menu {
 	
 	public void printMetodo() {
 		in = new Scanner(System.in); 
-		int a = 0;			// int che serve per prendere la scelta dell'utente
-		boolean x = true;
-		while(x== true) {
+				// int che serve per prendere la scelta dell'utente
+		boolean y = true;
+		ArrayList<Contatto> Contatti = new ArrayList<Contatto>();
+		Contatto contact = new Contatto();
+		while(y== true) {
 		  printMenu(); // metodo che richiama i print del menu
 		  try {
-		    a = Integer.parseInt(in.nextLine());  // la scelta dell'utente diventa un int
+		    int a = Integer.parseInt(in.nextLine());  // la scelta dell'utente diventa un int
      		switch(a) {
 			case 1 :
-				
+					Contatti.add(contact.addContact());
 				break;
 			case 2 :
-		
+					System.out.println("Inserisci il nome da ricercare: ");
+			    	String nomeDaSearchare = in.nextLine();
+			    	System.out.println("Inserisci il cognome da ricercare: ");
+			    	String cognomeDaSearchare = in.nextLine();
+					contact.ricercaPerNome(Contatti, nomeDaSearchare, cognomeDaSearchare);
 				break;
 			case 3 :
 			
 				break;
 			case 4 :
-			
+					contact.modificaContatto(Contatti);
 				break;
 			case 5 :
 				
@@ -51,7 +61,7 @@ public class Menu {
 				break;
 			case 7 :
 				System.out.println("Grazie e Arrivederci");
-				x = false; // esce dal ciclo
+				y = false; // esce dal ciclo
 				break;
 			default :
 				System.out.println("Scelta non valida, riprova");
@@ -62,6 +72,8 @@ public class Menu {
 		}
 	 }   
    }
+	
+	
 	
 	
 	
