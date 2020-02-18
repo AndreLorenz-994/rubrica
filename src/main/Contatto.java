@@ -202,7 +202,34 @@ public class Contatto {
 				}      	 
 	        }
 	    }	
-		in.close();
+		
 	}
+         
+	   public void eliminaContatto(ArrayList<Contatto> array) {
+			System.out.println("Seleziona il nome del contatto da eliminare:");
+			String nameToSearch2 = in.nextLine();
+			System.out.println("Seleziona il cognome del contatto da eliminare:");
+			String lastnameToSearch2 = in.nextLine();
+			for(Contatto cont : array){
+				if((cont.getNome() != null && cont.getNome().contains(nameToSearch2))&&(cont.getCognome() != null && cont.getCognome().contains(lastnameToSearch2))) {
+					array.remove(cont);
+				}   
+			}
+			System.out.println("Contatto eliminato \n");
+	   }
+	   
+	   public void mostraPreferiti(ArrayList<Contatto> array) {
 
+		   for(Contatto cont : array) {
+				if(cont.isPreferiti() == true) {
+					  System.out.println(cont.getNome());
+		        	  System.out.println(cont.getCognome());
+		        	  System.out.println(cont.getNumero());
+		        	  System.out.println(cont.getEmail());
+		        	  System.out.println(cont.getIndirizzo());
+		        	  System.out.println(cont.getNascita());
+				}   
+			}
+		   
+	   }
 }

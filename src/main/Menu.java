@@ -30,7 +30,7 @@ public class Menu {
 		in = new Scanner(System.in); 
 				// int che serve per prendere la scelta dell'utente
 		boolean y = true;
-		ArrayList<Contatto> Contatti = new ArrayList<Contatto>();
+		 ArrayList<Contatto> Contatti = new ArrayList<Contatto>();
 		Contatto contact = new Contatto();
 		while(y== true) {
 		  printMenu(); // metodo che richiama i print del menu
@@ -48,13 +48,13 @@ public class Menu {
 					contact.ricercaPerNome(Contatti, nomeDaSearchare, cognomeDaSearchare);
 				break;
 			case 3 :
-			
+					contact.mostraPreferiti(Contatti);
 				break;
 			case 4 :
 					contact.modificaContatto(Contatti);
 				break;
 			case 5 :
-				
+					contact.eliminaContatto(Contatti);
 				break;
 			case 6 :
 				
@@ -65,12 +65,15 @@ public class Menu {
 				break;
 			default :
 				System.out.println("Scelta non valida, riprova");
+				break;
 		}
 		    	
 	    } catch(NumberFormatException e) {							// catch che si attiva quando usa una stringa al posto din un int
             System.out.println( "Errore di digitalizzazione" );
 		}
 	 }   
+		
+		in.close();
    }
 	
 	
