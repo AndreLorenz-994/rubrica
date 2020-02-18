@@ -1,6 +1,5 @@
 package main;
 import java.util.Scanner;
-import java.text.ParseException;
 import java.util.ArrayList;
 public class Main {
 	

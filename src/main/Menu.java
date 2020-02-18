@@ -8,9 +8,9 @@ import java.util.Scanner;
 public class Menu {
 
 	static Scanner in;
-	
+
 	public static void printMenu() {
-		
+
 		System.out.println("Buongiono, benvenuti in Rubrica");
         System.out.println();
         System.out.println("1) aggiungi");
@@ -22,15 +22,15 @@ public class Menu {
         System.out.println("7) esci");
         System.out.println();
         System.out.print("Inserisci una scelta [1-7]: ");
-		
-		
+
+
 	}
-	
+
 	public void printMetodo() {
-		in = new Scanner(System.in); 
+		in = new Scanner(System.in);
 				// int che serve per prendere la scelta dell'utente
 		boolean y = true;
-		ArrayList<Contatto> Contatti = new ArrayList<Contatto>();
+		 ArrayList<Contatto> Contatti = new ArrayList<Contatto>();
 		Contatto contact = new Contatto();
 		while(y== true) {
 		  printMenu(); // metodo che richiama i print del menu
@@ -48,16 +48,16 @@ public class Menu {
 					contact.ricercaPerNome(Contatti, nomeDaSearchare, cognomeDaSearchare);
 				break;
 			case 3 :
-			
+					contact.mostraPreferiti(Contatti);
 				break;
 			case 4 :
 					contact.modificaContatto(Contatti);
 				break;
 			case 5 :
-				
+					contact.eliminaContatto(Contatti);
 				break;
 			case 6 :
-				
+
 				break;
 			case 7 :
 				System.out.println("Grazie e Arrivederci");
@@ -65,18 +65,20 @@ public class Menu {
 				break;
 			default :
 				System.out.println("Scelta non valida, riprova");
+				break;
 		}
-		    	
+
 	    } catch(NumberFormatException e) {							// catch che si attiva quando usa una stringa al posto din un int
             System.out.println( "Errore di digitalizzazione" );
 		}
-	 }  
-	 in.close();
-   }
-	
+	 }
 
-	
-	
-	
-	
+		in.close();
+   }
+
+
+
+
+
+
 }
