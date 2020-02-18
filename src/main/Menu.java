@@ -23,13 +23,13 @@ public class Menu {
 	}
 	
 	public void printMetodo() {
-		in = new Scanner(System.in);
-		int a = 0;
+		in = new Scanner(System.in); 
+		int a = 0;			// int che serve per prendere la scelta dell'utente
 		boolean x = true;
 		while(x== true) {
-		  printMenu();
+		  printMenu(); // metodo che richiama i print del menu
 		  try {
-		    a = Integer.parseInt(in.nextLine());
+		    a = Integer.parseInt(in.nextLine());  // la scelta dell'utente diventa un int
      		switch(a) {
 			case 1 :
 				
@@ -51,13 +51,13 @@ public class Menu {
 				break;
 			case 7 :
 				System.out.println("Grazie e Arrivederci");
-				x = false;
+				x = false; // esce dal ciclo
 				break;
 			default :
 				System.out.println("Scelta non valida, riprova");
 		}
 		    	
-	    } catch(NumberFormatException e) {
+	    } catch(NumberFormatException e) {							// catch che si attiva quando usa una stringa al posto din un int
             System.out.println( "Errore di digitalizzazione" );
 		}
 	 }   
