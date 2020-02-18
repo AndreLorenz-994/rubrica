@@ -61,6 +61,7 @@ public class Menu {
 				break;
 			case 7 :
 				System.out.println("Grazie e Arrivederci");
+				contact.printContatti(Contatti);
 				y = false; // esce dal ciclo
 				break;
 			default :
