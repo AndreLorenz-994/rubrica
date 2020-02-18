@@ -3,6 +3,7 @@ package main;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.Iterator;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
@@ -164,7 +165,7 @@ public class Contatto {
 						case 2:
 				        	 System.out.println("Nuovo cognome");
 				        	 String newLastName = in.nextLine();
-				        	 cont.setNome(newLastName);
+				        	 cont.setCognome(newLastName);
 						break;
 						case 3:
 				        	 System.out.println("Nuovo numero");
@@ -209,9 +210,11 @@ public class Contatto {
 			String nameToSearch2 = in.nextLine();
 			System.out.println("Seleziona il cognome del contatto da eliminare:");
 			String lastnameToSearch2 = in.nextLine();
-			for(Contatto cont : array){
+			Iterator<Contatto> itr = array.iterator();
+			while(itr.hasNext()){
+				Contatto cont = itr.next();
 				if((cont.getNome() != null && cont.getNome().contains(nameToSearch2))&&(cont.getCognome() != null && cont.getCognome().contains(lastnameToSearch2))) {
-					array.remove(cont);
+					itr.remove();
 				}
 			}
 			System.out.println("Contatto eliminato \n");
@@ -221,14 +224,28 @@ public class Contatto {
 
 		   for(Contatto cont : array) {
 				if(cont.isPreferiti() == true) {
-					  System.out.println(cont.getNome());
-		        	  System.out.println(cont.getCognome());
-		        	  System.out.println(cont.getNumero());
-		        	  System.out.println(cont.getEmail());
-		        	  System.out.println(cont.getIndirizzo());
-		        	  System.out.println(cont.getNascita());
+					toString(cont);
 				}
 			}
 
+	   }
+	   
+	   public void mostraRubrica(ArrayList<Contatto> array) {
+		   for(Contatto cont : array) {
+					  toString(cont);
+			}
+	   }	  
+	   
+	   public void toString(Contatto cont) {		   
+		   System.out.printf("Nome: %s \n"
+		   		+ "Cognome: %s \n"
+		   		+ "Numero: %d \n"
+		   		+ "Email: %s \n"
+		   		+ "Indirizzo: %s \n"
+		   		+ "Data di nascita: %s \n",	   		
+		   		cont.getNome(), cont.getCognome(), cont.getNumero(), cont.getEmail(), cont.getIndirizzo(), cont.getNascita()
+		   );
+		   System.out.println("\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\");
+		   System.out.println();
 	   }
 }

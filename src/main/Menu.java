@@ -57,7 +57,7 @@ public class Menu {
 					contact.eliminaContatto(Contatti);
 				break;
 			case 6 :
-
+					contact.mostraRubrica(Contatti);
 				break;
 			case 7 :
 				System.out.println("Grazie e Arrivederci");
