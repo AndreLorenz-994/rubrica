@@ -1,7 +1,8 @@
 package main;
 
+import java.util.ArrayList;
 import java.util.Date;
-
+import java.util.Scanner;
 class Contatto {
 	private String nome;
 	private String cognome;
@@ -24,6 +25,8 @@ class Contatto {
 		this.id = id;
 		this.preferiti = preferiti;
 	}
+	
+	public Contatto() {};
 
 	public String getNome() {
 		return nome;
@@ -89,7 +92,23 @@ class Contatto {
 		this.preferiti = preferiti;
 	}
 	
+	public void ricercaPerNome(ArrayList<Contatto> array,String nameToSearch,String lastnameToSearch) {
+		for(Contatto cont : array){
+	        if((cont.getNome() != null && cont.getNome().contains(nameToSearch))&&(cont.getCognome() != null && cont.getCognome().contains(lastnameToSearch))) {
+	        	  System.out.println(array);
+	        }
+	    }
+	}
 	
-	
+	public Contatto addContact() {
+		Scanner in = new Scanner(System.in);
+		System.out.println("Inserisci il nome: ");
+		String currentName = in.nextLine();
+		System.out.println("Inserisci il cognome: ");
+		String currentLastName = in.nextLine();
+		
+		 Contatto currentCont = new Contatto();
+		 return currentCont;
+	}
 	
 }
