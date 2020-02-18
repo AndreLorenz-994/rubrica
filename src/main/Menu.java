@@ -70,10 +70,11 @@ public class Menu {
 	    } catch(NumberFormatException e) {							// catch che si attiva quando usa una stringa al posto din un int
             System.out.println( "Errore di digitalizzazione" );
 		}
-	 }   
+	 }  
+	 in.close();
    }
 	
-	
+
 	
 	
 	
