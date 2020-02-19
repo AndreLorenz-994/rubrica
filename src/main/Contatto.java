@@ -269,9 +269,8 @@ public class Contatto {
 			}		 
 		}	
 	   
-	   public void populateArrayFromFile() {
+	   public void populateArrayFromFile(ArrayList<Contatto> array) {
 		   Scanner s;
-		   ArrayList<Contatto> contatti = new ArrayList<Contatto>();
 		try {
 			s = new Scanner(new FileReader(System.getProperty("user.dir") + ".txt"));
 			
@@ -280,12 +279,11 @@ public class Contatto {
 			       // TODO: make sure the split has correct format
 	
 			       // x.charAt(0) returns the first char of the string "x"
-			       contatti.add(new Contatto(split[0], split[1], Long.parseLong(split[2]), split[3], split[4], split[5], Boolean.parseBoolean(split[6])));
+			       array.add(new Contatto(split[0], split[1], Long.parseLong(split[2]), split[3], split[4], split[5], Boolean.parseBoolean(split[6])));
 			   }			
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		mostraRubrica(contatti);
 	   }
 }
