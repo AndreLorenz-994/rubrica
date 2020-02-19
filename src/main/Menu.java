@@ -20,8 +20,10 @@ public class Menu {
         System.out.println("5) elimina");
         System.out.println("6) visualizza rubrica");
         System.out.println("7) esci");
+        System.out.println("8) mostra contatti nel file");
+        System.out.println("9) salva contatti su file");         
         System.out.println();
-        System.out.print("Inserisci una scelta [1-7]: ");
+        System.out.print("Inserisci una scelta [1-9]: ");
 
 
 	}
@@ -60,10 +62,17 @@ public class Menu {
 					contact.mostraRubrica(Contatti);
 				break;
 			case 7 :
-				System.out.println("Grazie e Arrivederci");
-				contact.printContatti(Contatti);
+				System.out.println("Grazie e Arrivederci");				
 				y = false; // esce dal ciclo
 				break;
+			case 8 :
+				System.out.println("Stampa array da txt \n");
+				contact.populateArrayFromFile();
+				break;		
+			case 9 :
+				System.out.println("Scrivi su file");
+				contact.printContatti(Contatti);
+				break;					
 			default :
 				System.out.println("Scelta non valida, riprova");
 				break;

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.Iterator;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.ParseException;
@@ -251,19 +253,39 @@ public class Contatto {
 		   System.out.println();
 	   }
 	   
-	   public static void printContatti(ArrayList<Contatto> c) {
+	   public void printContatti(ArrayList<Contatto> c) {
 			  
 		   try {
 				FileWriter writer = new FileWriter(System.getProperty("user.dir") + ".txt");
 				for(int j = 0; j < c.size(); j++) {
 					Contatto cont = c.get(j);	
-					String spattern = "%s - %s - %d - %s - %s - %s \n";
-						writer.write(String.format(spattern, cont.getNome(), cont.getCognome(), cont.getNumero(), cont.getEmail(), cont.getIndirizzo(), cont.getNascita()));				
+					String spattern = "%s - %s - %d - %s - %s - %s - %b \n";
+						writer.write(String.format(spattern, cont.getNome(), cont.getCognome(), cont.getNumero(), cont.getEmail(), cont.getIndirizzo(), cont.getNascita(), cont.isPreferiti()));				
 				}
 				writer.close();
 			} catch (IOException e) {
 				System.out.println("An error occurred.");
 				e.printStackTrace(); 
 			}		 
-		}		   
+		}	
+	   
+	   public void populateArrayFromFile() {
+		   Scanner s;
+		   ArrayList<Contatto> contatti = new ArrayList<Contatto>();
+		try {
+			s = new Scanner(new FileReader(System.getProperty("user.dir") + ".txt"));
+			
+			   while (s.hasNextLine()) {
+			       String[] split = s.nextLine().split(" - ");
+			       // TODO: make sure the split has correct format
+	
+			       // x.charAt(0) returns the first char of the string "x"
+			       contatti.add(new Contatto(split[0], split[1], Long.parseLong(split[2]), split[3], split[4], split[5], Boolean.parseBoolean(split[6])));
+			   }			
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		mostraRubrica(contatti);
+	   }
 }
