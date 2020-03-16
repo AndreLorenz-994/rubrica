@@ -202,7 +202,7 @@ public class Contatto {
 							x = false;
 						break;
 						default:
-							System.out.println("La scelta non ï¿½ valida");
+							System.out.println("La scelta non è valida");
 					}
 				}
 	        }
